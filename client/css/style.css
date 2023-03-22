@@ -121,6 +121,7 @@ nav .toggle-btn {
   cursor: pointer;
   display: none;
   margin-right: 1rem;
+  outline: none;
 }
 
 /* Dropdown Menu */
