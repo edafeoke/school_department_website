@@ -15,6 +15,10 @@ header {
   z-index: -1;
 }
 
+#myVideo::-webkit-media-controls {
+  display: none !important;
+}
+
 .content {
   position: absolute;
   color: #fff;
