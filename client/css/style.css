@@ -93,6 +93,11 @@ nav {
   z-index: 999;
 }
 
+.nav-dark {
+  background-color: var(--var-background);
+  transition: all 1s ;
+}
+
 .links a:hover {
   background-color: var(--var-primary);
   color: #000;

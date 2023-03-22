@@ -24,6 +24,7 @@ header {
   bottom: 0;
   right: 0;
   width: 100%;
+  gap: .5rem;
 
   display: flex;
   flex-direction: column;

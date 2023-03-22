@@ -1,7 +1,7 @@
 const toggleButton = document.querySelector(".toggle-btn");
 const toggleIcon = document.querySelector(".toggle-btn i");
 const dropDownMenu = document.querySelector(".dropdown-menu");
-
+const navbar = document.querySelector('nav')
 let isOpen;
 
 toggleButton.addEventListener("click", () => {
@@ -13,33 +13,17 @@ toggleButton.addEventListener("click", () => {
     : '<i class="fa-solid fa-bars"></i>';
 });
 
-// document.querySelector('.content').addEventListener('click',()=>{
-//   if(isOpen)  {
-//     dropDownMenu.classList.toggle("open");
-//   }
 
-// })
 
 //Header Animation
-const header = document.querySelector("header");
 
-let i = 1;
-
-const slideShow = () => {
-  setInterval(() => {
-    if (i == 1) {
-      header.classList.remove("header-back-3");
-      header.classList.add("header-back-1");
-      i = 2;
-    } else if (i == 2) {
-      header.classList.remove("header-back-1");
-      header.classList.add("header-back-2");
-      i = 3;
-    } else {
-      header.classList.remove("header-back-2");
-      header.classList.add("header-back-3");
-      i = 1;
-    }
-  }, 5000);
-};
-document.onload = slideShow();
+const changeHeaderBackground = ()=>{
+  let scrollValue = window.scrollY
+  // console.log(scrollValue);
+  if (scrollValue > 100) {
+    navbar.classList.add('nav-dark');
+  }else{
+    navbar.classList.remove('nav-dark');
+  }
+}
+window.addEventListener('scroll', changeHeaderBackground);
