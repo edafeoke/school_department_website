@@ -84,7 +84,7 @@ nav {
   max-width: 1280px;
   height: 60px;
   margin: 0 auto;
-  padding: 8px;
+  padding: 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -115,6 +115,7 @@ nav .toggle-btn {
   color: #fff;
   cursor: pointer;
   display: none;
+  margin-right: 1rem;
 }
 
 /* Dropdown Menu */
@@ -155,18 +156,6 @@ nav .toggle-btn {
 
 /* NAVBAR END */
 
-/* header {
-  background-color: var(--var-background);
-  height: 25rem;
-  width: 100%;
-  padding-top: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-} */
-
 main {
   height: 200vh;
 }
@@ -176,7 +165,7 @@ footer {
 }
 
 /* RESPONSIVE DESIGN */
-@media (max-width: 926px) {
+@media (max-width: 996px) {
   nav .links,
   nav .button {
     display: none;
