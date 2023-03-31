@@ -106,7 +106,7 @@ nav {
 
 .links a:hover {
   background-color: var(--var-primary);
-  color: #000;
+  /* color: #000; */
   color: var(--var-background);
   border: none;
   outline: none;
@@ -115,7 +115,13 @@ nav {
 
 nav .logo a {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 300;
+}
+
+nav .logo span {
+  color: var(--var-primary);
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 nav .links {
@@ -169,10 +175,10 @@ nav .toggle-btn {
 }
 
 /* NAVBAR END */
-
+/* 
 main {
-  height: 200vh;
-}
+  height: 100vh;
+} */
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 996px) {
