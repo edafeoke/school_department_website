@@ -59,7 +59,12 @@ div.col {
   justify-content: center;
   box-sizing: border-box;
   margin: 8px;
-  padding: 8px;
+  padding: 32px;
+}
+
+div.col:hover {
+  border-bottom: 2px solid var(--var-primary);
+  border-left: 2px solid var(--var-primary);
 }
 
 main section .col .icon .svg {
