@@ -70,6 +70,13 @@ main section .col .icon .svg {
   margin: 16px;
 }
 
+.col .text h3 {
+  /* color: red; */
+  text-align: center;
+  font-weight: 500;
+  margin: 8px;
+}
+
 /* RESPONSIVE DESIGN */
 @media (max-width: 1006px) {
   main section {
