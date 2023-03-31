@@ -63,8 +63,8 @@ div.col {
 }
 
 div.col:hover {
-  border-bottom: 2px solid var(--var-primary);
-  border-left: 2px solid var(--var-primary);
+  border-bottom: .5px solid linear-gradient(to right, orange, #FFF);
+  border-left: .5px solid var(--var-primary);
 }
 
 main section .col .icon .svg {
