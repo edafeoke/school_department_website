@@ -7,7 +7,7 @@ main {
     align-items: center;
     justify-content: center;
     background: var(--var-background);
-    height: 90vh;
+    height: 80vh;
 }
 
 section {
