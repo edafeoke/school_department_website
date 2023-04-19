@@ -3,11 +3,12 @@
 
 :root {
   /* COLORS */
-  --var-primary: orange;
+  --var-primary: lightgreen;
   --var-background: #24262b;
 
   /* BORDER RADIUS */
   --radius: 15px;
+
 }
 
 * {
@@ -35,12 +36,12 @@ a {
 }
 
 .active {
-  color: orange;
+  color: var(--var-primary);
   font-weight: bold;
 }
 
 .button {
-  background-color: orange;
+  background-color: var(--var-primary);
   /* color: #000; */
   color: var(--var-background);
   padding: 0.5rem 1rem;
@@ -161,7 +162,7 @@ nav .toggle-btn {
 }
 
 .dropdown-menu li:hover a {
-  background-color: orange;
+  background-color: var(--var-primary);
   /* color: #000; */
   color: var(--var-background);
   border: none;
