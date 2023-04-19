@@ -7,6 +7,20 @@ main {
     align-items: center;
     justify-content: center;
     background: var(--var-background);
+    height: 90vh;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  color: #fff;
+  font-weight: bold;
+  font-family: "Poppins";
 }
 .page_404 {
   padding: 40px 0;
