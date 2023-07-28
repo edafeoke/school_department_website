@@ -21,13 +21,20 @@ class Console(cmd.Cmd):
         print('Bye bye')
         return True
 
+    def do_exit(self, args):
+        """Quits the console"""
+        print('Bye bye')
+        return True
+
     def do_EOF(self, args):
         """Quits the console"""
         print('Bye bye')
         return True
 
     def do_create(self, args):
-        """Creates a new instance of a Model, saves it (to the JSON file) and prints the id. Ex: $ create BaseModel"""
+        """Creates a new instance of a Model and
+        saves it (to the JSON file) and prints
+        the id. Ex: $ create BaseModel"""
 
         if args == '':
             print("** class name missing **")
@@ -267,13 +274,15 @@ class Console(cmd.Cmd):
                     print(counter)
                     return
                 else:
-                    raw = command[command.find('(')+1:command.find(')')]
-                    raw = raw.split(', ')
-                    id = raw[0][1:-1]
-                    c = command[0: command.find('(')]
-                    cm = "{} {} {} {}".format(c, classname, id.replace('"', ''),
-                                            " ".join(raw[1:]))
-                    return cmd.Cmd.onecmd(self, cm)
+                    print("Something is going on here")
+                    if command.__contains__("("):
+                        raw = command[command.find('(')+1:command.find(')')]
+                        raw = raw.split(', ')
+                        id = raw[0][1:-1]
+                        c = command[0: command.find('(')]
+                        cm = "{} {} {} {}".format(c, classname, id.replace('"', ''),
+                                                " ".join(raw[1:]))
+                        return cmd.Cmd.onecmd(self, cm)
         except:
             return cmd.Cmd.onecmd(self, line)
 

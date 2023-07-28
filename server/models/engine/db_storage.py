@@ -7,9 +7,13 @@ from models.base_model import Base, BaseModel
 from models.user import User
 from models.todo import Todo
 from models.news import News
-import models
+from models.course import Course
+from models.student import Student
+from models.lecturer import Lecturer
 
-classes = {User: "User", News: "News"}
+
+classes = {User: "User", News: "News", Course: "Course",
+           Student: "Student", Lecturer: "Lecturer"}
 
 
 class DBStorage:
