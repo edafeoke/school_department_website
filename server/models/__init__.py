@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Initailization file'''
+'''Storage engine initailization file'''
 
 from os import getenv
 

@@ -5,3 +5,4 @@ venv
 main
 install
 *.c
+.env

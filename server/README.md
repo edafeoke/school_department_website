@@ -1,7 +1,15 @@
-# python-backend-codebase
+#  A school department website
 
-###### A base project upon which python objected-oriented backend project will be built
+##### Computer science department website of a school
 
 ## Installation
 
     git clone https://github.com/edafeoke/python-backend-codebase.git
+
+## Setup
+
+    ./run_server.sh
+
+## Run Server
+
+    ./run_server.sh
