@@ -3,7 +3,7 @@
 
 from flask import Flask
 from models import storage
-from api.v1.views import app_views, api
+from views import app_views, api
 from flask import Flask, render_template, make_response, jsonify
 from flask_cors import CORS
 from os import environ

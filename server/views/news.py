@@ -6,7 +6,7 @@
 from models.news import News
 from models.user import User
 from models import storage
-from api.v1.views import api
+from views import api
 from flask import abort, jsonify, request, make_response
 from flask_restx import Resource, fields
 # from api.v1.auth import token_required

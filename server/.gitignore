@@ -2,3 +2,6 @@ file.json
 __pycache__
 */__pycache__
 venv
+main
+install
+*.c

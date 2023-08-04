@@ -10,6 +10,9 @@ from models.base_model import BaseModel
 from models.user import User
 from models.todo import Todo
 from models.news import News
+from models.student import Student
+from models.lecturer import Lecturer
+from models.course import Course
 from os.path import exists
 import json
 

@@ -3,7 +3,7 @@
 from flask_restx import Resource, fields, model
 from models.user import User as Person
 from models import storage
-from api.v1.views import api, app_views
+from views import api, app_views
 from flask import abort, jsonify, make_response, request
 
 

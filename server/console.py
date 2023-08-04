@@ -6,8 +6,12 @@ from models import storage
 import models
 from models.base_model import BaseModel
 # import all models here
-from models.user import User
-from models.todo import Todo
+# from models.user import User
+# from models.todo import Todo
+from models.course import Course
+from models.student import Student
+from models.news import News
+from models.lecturer import Lecturer
 
 
 class Console(cmd.Cmd):
@@ -38,7 +42,6 @@ class Console(cmd.Cmd):
 
         if args == '':
             print("** class name missing **")
-
             return
 
         line = self.parseline(args)
@@ -213,7 +216,7 @@ class Console(cmd.Cmd):
             return
 
         value = args_list[3]
-
+        print(value)
         attr = args_list[2]
         v = ""
         if value[0] == '"' or value[0] == "'":
@@ -230,61 +233,36 @@ class Console(cmd.Cmd):
     def emptyline(self) -> bool:
         pass
 
+    def onecmd(self, line: str) -> bool:
+        classname = self.parseline(line)[0]
+        command = self.parseline(line)[2]
+        c = ''
+        id = ''
+        attribute_name = ''
+        value = ''
+        if classname not in globals().keys():
+            return super().onecmd(line)
+        if '.' in command:
+            _, command = command.split('.')
+        c = command[0:command.find('(')]
+        if '(' in command:
+            parameters = command[command.find('(')+1:command.find(')')]
+            parameters = parameters.split(',')
 
-    # def onecmd(self, line: str) -> bool:
-    #     commands = self.parseline(line)
-    #     if commands[0] not in globals().keys():
-    #         return super().onecmd(line)
-    #     else:
-    #         c = ''
-    #         i = 0
-    #         for a in commands[1]:
-    #             if a != '.' and a!= '(' and a != ')':
-    #                 c += a
-    #                 i += 1
-    #         func = getattr(self, f"do_{c}")
-    #         func(commands[0])
-
-    def onecmd(self, line):
-        """Interpret the argument as though it had been typed in response
-        to the prompt.
-        Checks whether this line is typed at the normal prompt or in
-        a breakpoint command list definition.
-        """
-        try:
-            classname = ''
-            command = ''
-            if '.' not in line:
-                command, classname = line.split(' ')
-            else:
-                classname, command = line.split('.')
-            if classname not in globals():
-                return cmd.Cmd.onecmd(self, line)
-            else:
-                if command == 'all()' or command == 'all':
-                    self.do_all(classname)
-                    return
-                elif command == 'count()' or command == 'count':
-                    counter = 0
-                    all_objs = models.storage.all()
-                    for k in all_objs.keys():
-                        key = k.split('.')
-                        if key[0] == classname:
-                            counter += 1
-                    print(counter)
-                    return
-                else:
-                    print("Something is going on here")
-                    if command.__contains__("("):
-                        raw = command[command.find('(')+1:command.find(')')]
-                        raw = raw.split(', ')
-                        id = raw[0][1:-1]
-                        c = command[0: command.find('(')]
-                        cm = "{} {} {} {}".format(c, classname, id.replace('"', ''),
-                                                " ".join(raw[1:]))
-                        return cmd.Cmd.onecmd(self, cm)
-        except:
-            return cmd.Cmd.onecmd(self, line)
+            if len(parameters) == 1:
+                id = parameters[0].replace('"', '')
+                print(id)
+            elif len(parameters) == 2:
+                id = parameters[0].replace('"', '')
+                attribute_name = parameters[1].replace('"', '')
+                print(attribute_name)
+            elif len(parameters) == 3:
+                id = parameters[0].replace('"', '')
+                attribute_name = parameters[1].replace('"', '')
+                value = parameters[2]
+        print('{} {} {} {} {}'.format(c, classname, id, attribute_name, value))
+        cmd.Cmd.onecmd(self, '{} {} {} {} {}'.format(
+            c, classname, id, attribute_name, value))
 
 
 if __name__ == "__main__":
