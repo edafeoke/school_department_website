@@ -19,7 +19,6 @@ def get_stats():
         # "City": "cities",
         # "Place": "places",
         # "Review": "reviews",
-        "Todo": "todos",
         "User": "users"}
     for cls in classes:
         count = storage.count(cls)

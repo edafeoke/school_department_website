@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-""" objects that handle all default RestFul API actions for Todos """
+""" objects that handle all default RestFul API actions for News """
 
 # import api
-# from models.todo import Todo
+
 from models.news import News
 from models.user import User
 from models import storage
@@ -16,7 +16,7 @@ class News1(Resource):
     def get(self):
         """ returns list of all news objects """
         all_newss = []
-        newss = storage.all(News).values()
+        news = storage.all(News).values()
         for news in news:
             d = news.to_dict()
             del d['_sa_instance_state']
@@ -28,32 +28,32 @@ class News1(Resource):
 @api.route('/users/<user_id>/news', strict_slashes=False)
 # @api.doc(security='apikey')
 class News2(Resource):
-    resource_fields = api.model('todo', {
+    resource_fields = api.model('news', {
         'title': fields.String,
         'isCompleted': fields.Boolean,
     })
 
     def get(self, user_id):
-        """ returns list of all todo objects """
+        """ returns list of all news objects """
 
         user = storage.get(User, user_id)
         if not user:
             abort(404)
 
-        todos = []
-        all_todos = storage.all(Todo).values()
-        for todo in all_todos:
-            d = todo.to_dict()
+        newss = []
+        all_newss = storage.all(News).values()
+        for news in all_newss:
+            d = news.to_dict()
             del d['_sa_instance_state']
-            if todo.user_id == user_id:
-                todos.append(d)
-        return jsonify(todos)
+            if news.user_id == user_id:
+                newss.append(d)
+        return jsonify(newss)
 
     # @api.doc(params={'title': ''})
     # @api.marshal_with(resource_fields, as_list=True)
     @api.expect(resource_fields)
     def post(self, user_id):
-        """ Creates a todo objects """
+        """ Creates a news objects """
         data = request.get_json()
         if not data:
             abort(404, 'Not a JSON')
@@ -62,52 +62,52 @@ class News2(Resource):
         if not user:
             abort(404)
 
-        todo = Todo(data)
-        todo.user_id = user_id
+        news = News(data)
+        news.user_id = user_id
         for k, v in data.items():
-            setattr(todo, k, v)
-        todo.save()
-        t = todo.to_dict()
+            setattr(news, k, v)
+        news.save()
+        t = news.to_dict()
         del t['_sa_instance_state']
         print(t)
         return make_response(jsonify(t), 201)
 
 
-@api.route('/todos/<todo_id>', strict_slashes=False)
-class Todo3(Resource):
-    resource_fields = api.model('todo', {
+@api.route('/news/<news_id>', strict_slashes=False)
+class News3(Resource):
+    resource_fields = api.model('news', {
         'title': fields.String,
         'isCompleted': fields.Boolean,
     })
-    def get(self, todo_id):
-        """ returns list of all todo objects """
-        todo = storage.get(Todo, todo_id)
+    def get(self, news_id):
+        """ returns list of all news objects """
+        news = storage.get(News, news_id)
 
-        if not todo:
+        if not news:
             abort(404)
 
-        t = todo.to_dict()
+        t = news.to_dict()
         del t['_sa_instance_state']
         print(t)
         return jsonify(t)
 
-    def delete(self, todo_id):
-        """ delete a todo object """
-        todo = storage.get(Todo, todo_id)
+    def delete(self, news_id):
+        """ delete a news object """
+        news = storage.get(News, news_id)
 
-        if not todo:
+        if not news:
             abort(404)
 
-        todo.delete()
+        news.delete()
         storage.save()
         return make_response(jsonify({}), 200)
     
     @api.expect(resource_fields)
-    def put(self, todo_id):
-        """ Updates a todo object """
-        todo = storage.get(Todo, todo_id)
+    def put(self, news_id):
+        """ Updates a news object """
+        news = storage.get(News, news_id)
 
-        if not todo:
+        if not news:
             abort(404)
 
         data = request.get_json()
@@ -117,9 +117,9 @@ class Todo3(Resource):
 
         for k, v in data.items():
             if k != 'id' and k != 'user_id' and k != 'created_at' and k != 'updated_at':
-                setattr(todo, k, v)
-        todo.save()
-        t = todo.to_dict()
+                setattr(news, k, v)
+        news.save()
+        t = news.to_dict()
         del t['_sa_instance_state']
 
         return make_response(jsonify(t), 203)

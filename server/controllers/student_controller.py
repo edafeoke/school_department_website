@@ -11,8 +11,9 @@ def get_all_student():
     all_objs = []
     objs = storage.all()
     for v in objs.values():
-        if v.__class__.__name__ == "Student":
+        if v.__class__.__name__ == "User" and v.role == 'student':
             # all_objs.append(str(v))
             all_objs.append(v)
     print(all_objs)
     return all_objs
+

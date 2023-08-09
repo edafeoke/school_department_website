@@ -1,0 +1,61 @@
+{% extends 'admin/base.html' %} {% block content %}
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title fw-semibold mb-4">Create new student</h5>
+      <div class="card">
+        <div class="card-body">
+          <form method='POST' action="{{ url_for('new_student') }}">
+            <div class="mb-3">
+              <label for="name" class="form-label">Student Full Name</label>
+              <input
+                placeholder="Oke Edafe Great"
+                type="text"
+                class="form-control"
+                id="name"
+                name='name'
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="matno" class="form-label">Matriculation number</label>
+              <input
+                placeholder="COM/HND/21/00000"
+                type="text"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                name='mat_number'
+              />
+            </div>
+            <div class="mb-3">
+              <label for="level" class="form-label">Level</label>
+              <select class="form-control"
+              id="exampleInputEmail1"
+              name='level'
+              aria-describedby="emailHelp">
+                <option>ND 1</option>
+                <option>ND 2</option>
+                <option>HND 1</option>
+                <option>HND 2</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="sex" class="form-label">Sex</label>
+              <select class="form-control"
+              id="exampleInputEmail1"
+              name='sex'
+              aria-describedby="emailHelp">
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

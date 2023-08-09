@@ -15,12 +15,6 @@ class Lecturer(BaseModel, Base):
     __tablename__ = 'lecturers'
 
     if HBNB_TYPE_STORAGE == 'db':
-        email = Column(String(128), nullable=False)
-        password = Column(String(128), nullable=False)
-        first_name = Column(String(128), nullable=True)
-        last_name = Column(String(128), nullable=True)
-        session_id = Column(String(128), nullable=True)
-        reset_token = Column(String(128), nullable=True)
         title = Column(String(128), nullable=True)
         bio = Column(String(128), nullable=True)
 
@@ -28,12 +22,6 @@ class Lecturer(BaseModel, Base):
 
     def __init__(self, *args, **kwargs):
         #     """initializes lecturer"""
-        self.email = ''
-        self.password = ''
-        self.first_name = ''
-        self.last_name = ''
-        self.session_id = ''
-        self.reset_token = ''
         self.title = ''
         self.bio = ''
 

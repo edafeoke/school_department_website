@@ -1,0 +1,41 @@
+models
+├── base_model.py
+├── course.py
+├── engine
+│   ├── db_storage.py
+│   ├── file_storage.py
+│   └── __init__.py
+├── __init__.py
+├── lecturer.py
+├── news.py
+├── student.py
+├── todo.py
+└── user.py
+views
+├── api
+│   ├── __init__.py
+│   └── v1
+│       ├── app.py
+│       └── __init__.py
+├── index.py
+├── __init__.py
+├── news.py
+├── student_view.py
+├── todos.py
+└── users.py
+controllers
+├── lecturer_controller.py
+├── news_controller.py
+└── student_controller.py
+app
+├── app.py
+├── static
+│   ├── css
+│   ├── images
+│   ├── js
+└── templates
+    ├── 404.html
+    ├── admin
+    │   ├── index.html
+    ├── contact.html
+    └── index.html

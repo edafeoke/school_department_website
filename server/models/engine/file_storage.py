@@ -2,13 +2,10 @@
 """file_storage module"""
 
 from datetime import datetime
-# import sys
-# sys.path.append('../../models')
 import models
 from models.base_model import BaseModel
 # Import all models that inherit from base_model here
 from models.user import User
-from models.todo import Todo
 from models.news import News
 from models.student import Student
 from models.lecturer import Lecturer

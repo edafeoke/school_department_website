@@ -6,8 +6,7 @@ from models import storage
 import models
 from models.base_model import BaseModel
 # import all models here
-# from models.user import User
-# from models.todo import Todo
+from models.user import User
 from models.course import Course
 from models.student import Student
 from models.news import News

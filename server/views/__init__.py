@@ -13,7 +13,6 @@ api = Api(app_views,
 
 from views.index import *
 from views.users import *
-from views.todos import *
 from views.news import *
 
 # from api.v1.views.places import *
