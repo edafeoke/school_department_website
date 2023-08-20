@@ -12,7 +12,7 @@ api = Api(app_views,
           version='1.0')
 
 from views.index import *
-from views.users import *
+# from views.users import *
 from views.news import *
 
 # from api.v1.views.places import *

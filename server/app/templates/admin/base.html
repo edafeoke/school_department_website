@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Modernize Free</title>
+    <title>Admin</title>
     <link
       rel="shortcut icon"
       type="image/png"
@@ -12,6 +12,10 @@
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/styles.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"
     />
   </head>
 
@@ -34,11 +38,11 @@
             class="brand-logo d-flex align-items-center justify-content-between"
           >
             <a href="{{ url_for('admin') }}" class="text-nowrap logo-img">
-              <img
+              <!--<img
                 src="{{ url_for('static', filename='images/logos/dark-logo.svg') }}"
                 width="180"
                 alt=""
-              />
+              />-->
             </a>
             <div
               class="close-btn d-xl-none d-block sidebartoggler cursor-pointer"
@@ -68,7 +72,7 @@
               </li>
               <li class="nav-small-cap">
                 <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                <span class="hide-menu">STUDENTS</span>
+                <span class="hide-menu">Students</span>
               </li>
               <li class="sidebar-item">
                 <a
@@ -95,6 +99,18 @@
                 </a>
               </li>
               <li class="sidebar-item">
+                <a
+                  class="sidebar-link"
+                  href="{{ url_for('new_students_from_csv') }}"
+                  aria-expanded="false"
+                >
+                  <span>
+                    <i class="ti ti-file"></i>
+                  </span>
+                  <span class="hide-menu">Create students from csv</span>
+                </a>
+              </li>
+              <!--<li class="sidebar-item">
                 <a
                   class="sidebar-link"
                   href="./ui-alerts.html"
@@ -197,7 +213,7 @@
                   </span>
                   <span class="hide-menu">Sample Page</span>
                 </a>
-              </li>
+              </li>-->
             </ul>
             <div
               class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded"
@@ -259,10 +275,9 @@
                 class="navbar-nav flex-row ms-auto align-items-center justify-content-end"
               >
                 <a
-                  href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/"
-                  target="_blank"
-                  class="btn btn-primary"
-                  >Download Free</a
+                  href="{{ url_for('logout')}}"
+                  class="btn btn-danger"
+                  >Logout</a
                 >
                 <li class="nav-item dropdown">
                   <a
@@ -308,7 +323,7 @@
                       </a>
                       <a
                         href="./authentication-login.html"
-                        class="btn btn-outline-primary mx-3 mt-2 d-block"
+                        class="btn btn-outline-danger mx-3 mt-2 d-block"
                         >Logout</a
                       >
                     </div>
@@ -324,10 +339,13 @@
     </div>
     <script src="{{ url_for('static', filename='libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
     <script src="{{ url_for('static', filename='js/sidebarmenu.js') }}"></script>
     <script src="{{ url_for('static', filename='js/app.min.js') }}"></script>
     <script src="{{ url_for('static', filename='libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ url_for('static', filename='libs/simplebar/dist/simplebar.js') }}"></script>
     <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin-students.js') }}"></script>
   </body>
 </html>

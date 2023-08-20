@@ -27,7 +27,8 @@ class BaseModel:
                         setattr(self, k, val)
                     else:
                         setattr(self, k, v)
-
+            if 'id' not in kwargs.keys():
+                setattr(self, 'id', str(uuid4()))
         else:
             self.id = str(uuid4())
             self.created_at = datetime.utcnow()

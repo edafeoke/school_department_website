@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from models.base_model import BaseModel, Base
+from models.user import User
 from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String
@@ -9,7 +10,7 @@ from sqlalchemy.orm import relationship
 HBNB_TYPE_STORAGE = getenv('HBNB_TYPE_STORAGE') or 'file'
 
 
-class Lecturer(BaseModel, Base):
+class Lecturer(User, BaseModel, Base):
     '''Lecturer class'''
 
     __tablename__ = 'lecturers'
@@ -24,5 +25,6 @@ class Lecturer(BaseModel, Base):
         #     """initializes lecturer"""
         self.title = ''
         self.bio = ''
+        self.username = ''
 
         super().__init__(*args, **kwargs)

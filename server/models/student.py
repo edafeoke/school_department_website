@@ -17,6 +17,7 @@ class Student(User, BaseModel, Base):
 
     if HBNB_TYPE_STORAGE == 'db':
         mat_number = Column(String(128), nullable=True)
+        level = Column(String(128), nullable=True)
 
     def __init__(self, *args, **kwargs):
         #     """initializes student"""

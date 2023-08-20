@@ -1,4 +1,4 @@
-from models.user import User
+# from models.user import User
 from models import storage
 from views import app_views
 from flask import jsonify, make_response
