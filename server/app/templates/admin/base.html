@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
       rel="shortcut icon"
       type="image/png"
@@ -93,7 +94,7 @@
                   aria-expanded="false"
                 >
                   <span>
-                    <i class="ti ti-plus"></i>
+                    <i class="ti ti-user-plus"></i>
                   </span>
                   <span class="hide-menu">Create student</span>
                 </a>
@@ -105,11 +106,70 @@
                   aria-expanded="false"
                 >
                   <span>
-                    <i class="ti ti-file"></i>
+                    <i class="ti ti-file-description"></i>
                   </span>
                   <span class="hide-menu">Create students from csv</span>
                 </a>
               </li>
+              <!-- lecturer-->
+              <li class="nav-small-cap">
+                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                <span class="hide-menu">Lecturers</span>
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link"
+                  href="{{ url_for('all_lecturers') }}"
+                  aria-expanded="false"
+                >
+                  <span>
+                    <i class="ti ti-users"></i>
+                  </span>
+                  <span class="hide-menu">Manage Lecturers</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link"
+                  href="{{ url_for('new_lecturer') }}"
+                  aria-expanded="false"
+                >
+                  <span>
+                    <i class="ti ti-plus"></i>
+                  </span>
+                  <span class="hide-menu">Register Lecturer</span>
+                </a>
+              </li>
+              <!-- Course -->
+              <li class="nav-small-cap">
+                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                <span class="hide-menu">Courses</span>
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link"
+                  href="{{ url_for('all_courses') }}"
+                  aria-expanded="false"
+                >
+                  <span>
+                    <i class="ti ti-book"></i>
+                  </span>
+                  <span class="hide-menu">Manage Courses</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link"
+                  href="{{ url_for('new_course') }}"
+                  aria-expanded="false"
+                >
+                  <span>
+                    <i class="ti ti-plus"></i>
+                  </span>
+                  <span class="hide-menu">Register Course</span>
+                </a>
+              </li>
+              
               <!--<li class="sidebar-item">
                 <a
                   class="sidebar-link"
@@ -274,9 +334,7 @@
               <ul
                 class="navbar-nav flex-row ms-auto align-items-center justify-content-end"
               >
-                <a
-                  href="{{ url_for('logout')}}"
-                  class="btn btn-danger"
+                <a href="{{ url_for('logout')}}" class="btn btn-danger"
                   >Logout</a
                 >
                 <li class="nav-item dropdown">

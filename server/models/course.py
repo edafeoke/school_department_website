@@ -16,13 +16,15 @@ class Course(BaseModel, Base):
 
     if HBNB_TYPE_STORAGE == 'db':
         title = Column(String(256), nullable=False)
-        lecturer_id = Column(String(256),  ForeignKey('lecturers.id'), nullable=False)
+        lecturer_id = Column(String(256),  ForeignKey('lecturers.id'), nullable=True)
+        # lecturer_id = db.Column(db.Integer, db.ForeignKey('lecturer.id'))
+        lecturer = relationship('Lecturer', backref='courses')
         code = Column(String(256), nullable=False)
 
 
     def __init__(self, *args, **kwargs):
     #     """initializes user"""
-        self.lecturer_id = ''
+        # self.lecturer_id = ''
         self.title = ''
-        self.code = False
+        self.code = ''
         super().__init__(*args, **kwargs)

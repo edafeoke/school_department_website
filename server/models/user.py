@@ -17,9 +17,11 @@ class User(BaseModel, Base, UserMixin):
 
     if HBNB_TYPE_STORAGE == 'db':
         username = Column(String(128), nullable=True)
-        email = Column(String(128), nullable=True)
+        sex = Column(String(128), nullable=False)
+        first_name = Column(String(128), nullable=True)
+        last_name = Column(String(128), nullable=True)
+        email = Column(String(128), nullable=False)
         password = Column(String(128), nullable=False)
-        name = Column(String(128), nullable=True)
         session_id = Column(String(128), nullable=True)
         reset_token = Column(String(128), nullable=True)
         role = Column(String(128), nullable=False)
@@ -28,12 +30,14 @@ class User(BaseModel, Base, UserMixin):
     def __init__(self, *args, **kwargs):
     #     """initializes user"""
         self.email = ''
+        first_name = ''
+        last_name = ''
         self.password = ''
-        self.name = ''
         self.session_id = ''
         self.reset_token = ''
         self.role = ''
         self.username = ''
+        self.sex = ''
         super().__init__(self, *args, **kwargs)
     
     def hash_password(self, password):

@@ -1,0 +1,138 @@
+:root {
+  /* AVATER IMAGE SIZE */
+  --avatar: 200px;
+}
+
+header {
+  position: relative;
+  margin-top: -60px;
+  max-height: 100%;
+  overflow: hidden;
+  margin-bottom: -7px;
+}
+
+#myVideo {
+  min-width: 100%;
+  min-height: 100vh;
+  max-width: 100%;
+  max-height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#myVideo::-webkit-media-controls {
+  display: none !important;
+}
+
+.content {
+  position: absolute;
+  color: #fff;
+  background-color: rgba(31, 39, 43, 0.75);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+/* MAIN */
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+main section {
+  padding: 16px;
+  margin: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+div.col {
+  display: flex;
+  flex: 1;
+  min-width: 30%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* box-sizing: border-box; */
+  margin: 8px;
+  padding: 32px;
+}
+
+div.col:hover {
+  border-bottom: 0.5px solid linear-gradient(to right, orange, #fff);
+  border-left: 0.5px solid var(--var-primary);
+}
+
+main section .col .icon .svg {
+  color: var(--var-primary);
+  width: 100px;
+  height: 100px;
+  aspect-ratio: 1;
+  margin: 16px;
+}
+
+main section .col .icon img {
+  color: var(--var-primary);
+  width: var(--avatar);
+  height: var(--avatar);
+  aspect-ratio: 1;
+  margin: 16px;
+
+  border-radius: 100%;
+}
+
+.col .text h3 {
+  text-align: center;
+  font-weight: 500;
+  margin: 8px;
+}
+
+.col .text .details {
+  text-align: center;
+  font-weight: 300;
+  margin: 8px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1006px) {
+  main section {
+    padding: 16px;
+    margin: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  div.col {
+    display: flex;
+    flex: 1;
+    min-width: 40%;
+  }
+}
+
+@media (max-width: 660px) {
+  main section {
+    padding: 16px;
+    margin: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* flex-wrap: wrap; */
+  }
+
+  div.col {
+    display: flex;
+    flex: 1;
+    min-width: 90%;
+  }
+}

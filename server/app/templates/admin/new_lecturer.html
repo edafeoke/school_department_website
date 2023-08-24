@@ -1,0 +1,101 @@
+{% extends 'admin/base.html' %} {% block content %}
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title fw-semibold mb-4">REGISTER NEW LECTURER</h5>
+      <div class="card">
+        <div class="card-body">
+          <form method="POST" action="{{ url_for('new_lecturer') }}">
+            <div class="mb-3">
+              <label for="name" class="form-label">Title</label>
+              <input
+                title="Enter lecturer title"
+                placeholder="Title"
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                aria-describedby="Title"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">First Name</label>
+              <input
+                title="Enter lecturer's first name"
+                placeholder="First Name"
+                type="text"
+                class="form-control"
+                id="first_name"
+                name="first_name"
+                aria-describedby="First Name"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Last Name</label>
+              <input
+                title="Enter lecturer's last name"
+                placeholder="Last Name"
+                type="text"
+                class="form-control"
+                id="last_name"
+                name="last_name"
+                aria-describedby="last name"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Username</label>
+              <input
+                title="Enter username"
+                placeholder="Username"
+                type="username"
+                class="form-control"
+                id="username"
+                name="username"
+                aria-describedby="username"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Email</label>
+              <input
+                title="Enter lecturer's email address"
+                placeholder="Email address"
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                aria-describedby="email address"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="sex" class="form-label">Sex</label>
+              <select
+              title="Enter lecturer's gender"
+                class="form-control"
+                id="sex"
+                name="sex"
+                aria-describedby="sex"
+              >
+                <option>Male</option>
+                <option>Female</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="bio" class="form-label">Bio</label>
+              <textarea
+              title="Enter lecturer's biography"
+                class="form-control"
+                id="bio"
+                name="bio"
+                aria-describedby="bio"
+              >
+              </textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

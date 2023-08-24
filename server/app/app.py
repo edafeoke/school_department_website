@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''rest api entry module'''
+'''Flask app entry module'''
 
 import pandas as pd
 from flask import Flask, url_for, request, redirect, Response, flash
@@ -11,13 +11,15 @@ from flask_cors import CORS
 from flask_login import LoginManager
 from werkzeug.security import check_password_hash
 from flask_login import login_user, login_required, logout_user, current_user
+import MySQLdb
+from sqlalchemy.exc import IntegrityError
 import os
 from os import environ
 # from flask_restplus import Api
+import models
 from models.student import Student
 from models.lecturer import Lecturer
-import models
-
+from models.course import Course
 
 
 UPLOAD_FOLDER = 'uploads'
@@ -36,13 +38,13 @@ login_manager.login_view = "/login"  # Set the login view's name
 cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 # api = Api(app)
 
-
 @login_manager.user_loader
 def load_user(user_id):
-    print(user_id)
-    user = models.storage.get_session().query(Student).filter_by(id=user_id).first()
+    user = models.storage.get_session().query(
+        Student).filter_by(id=user_id).first()
     if not user:
-        user = models.storage.get_session().query(Lecturer).filter_by(id=user_id).first()
+        user = models.storage.get_session().query(
+            Lecturer).filter_by(id=user_id).first()
     return user
 
 @app.teardown_appcontext
@@ -56,10 +58,28 @@ def not_found(error):
     # return make_response(jsonify({'error': 'Not found'}), 404)
     return render_template('404.html')
 
+@app.errorhandler(401)
+def not_found(error):
+    # return make_response(jsonify({'error': 'Not found'}), 404)
+    return render_template('404.html')
+
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    current_route = request.endpoint
+    return render_template('index.html', current_route=current_route)
+
+
+@app.route('/about')
+def about():
+    current_route = request.endpoint
+    return render_template('about.html', current_route=current_route)
+
+
+@app.route('/contact')
+def contact():
+    current_route = request.endpoint
+    return render_template('contact.html', current_route=current_route)
 
 
 @app.route('/admin', methods=['GET', 'POST'])
@@ -67,15 +87,11 @@ def index():
 def admin():
     return render_template('admin/index.html')
 
-
-@app.route('/admin/students', methods=['GET', 'POST'])
+@app.route('/admin/students', methods=['GET'])
 @login_required
 def all_students():
-    if request.method == 'GET':
-        students = storage.all(Student)
-        print(students)
-        return render_template('admin/students.html', students=students.values())
-    return render_template('admin/students.html')
+    students = storage.all(Student)
+    return render_template('admin/students.html', students=students.values())
 
 @app.route('/admin/lecturers', methods=['GET', 'POST'])
 def all_lecturers():
@@ -85,19 +101,32 @@ def all_lecturers():
         return render_template('admin/lecturers.html', lecturers=lecturers.values())
     return render_template('admin/lecturers.html')
 
+@app.route('/admin/courses', methods=['GET', 'POST'])
+def all_courses():
+    '''Returns lists of all courses'''
+
+    if request.method == 'GET':
+        courses = models.storage.get_session().query(
+            Course).join(Lecturer).all()
+        # courses = storage.all(Course)
+        return render_template('admin/courses.html', courses=courses)
+    return render_template('admin/courses.html')
 
 @app.route('/admin/student/new', methods=['GET', 'POST'])
+@login_required
 def new_student():
     if request.method == 'POST':
         # Create a new student record using SQLAlchemy
         new_student = Student(**(dict(request.form)))
         new_student.hash_password("password")
         new_student.save()
+        flash('Student record added successfully', "success")
         return redirect(url_for('all_students'))
     return render_template('admin/new_student.html')
 
 
 @app.route('/admin/student/from_csv', methods=['GET', 'POST'])
+@login_required
 def new_students_from_csv():
     if request.method == 'POST':
         if 'file' not in request.files:
@@ -106,7 +135,8 @@ def new_students_from_csv():
         file = request.files['file']
 
         if file.filename == '':
-            return jsonify({'error': 'No selected file'})
+            flash('No file selected', "danger")
+            return render_template('admin/new_student_from_csv.html')
 
         if file:
             file.save(os.path.join('uploads', file.filename))
@@ -118,22 +148,56 @@ def new_students_from_csv():
                 headers = df.columns.tolist()
                 rows = df.values.tolist()
                 uploaded_data = {'headers': headers, 'rows': rows}
-                # return jsonify({'success': True, 'uploaded_data': uploaded_data})
                 for row in rows:
                     new_student = {}
                     for index, header in enumerate(headers):
                         new_student[header] = row[index]
                     Student(**new_student).save()
+                    flash('Student record added successfully', "success")
                 return render_template('admin/new_student_from_csv.html', uploaded_data=uploaded_data)
+            except IntegrityError as e:
+                if isinstance(e.orig, MySQLdb.IntegrityError) and 'Duplicate entry' in str(e.orig):
+                    duplicate_entry_message = "The provided mat number already exists."
+                    flash(duplicate_entry_message, "danger")
+                    return render_template('admin/new_student_from_csv.html')
+                else:
+                    return render_template('admin/new_student_from_csv.html')
             except Exception as e:
-                return jsonify({'error': 'Error reading CSV: ' + str(e)})
-
+                flash(str(e), "danger")
+                return render_template('admin/new_student_from_csv.html')
+                # return jsonify({'error': 'Error reading CSV: ' + str(e)})
     return render_template('admin/new_student_from_csv.html')
 
 
 @app.route('/admin/lecturer/new', methods=['GET', 'POST'])
+@login_required
 def new_lecturer():
-    return render_template('admin/ui-card.html')
+    if request.method == 'POST':
+        # Create a new lecturer record using SQLAlchemy
+        new_lecturer = Lecturer(**(dict(request.form)))
+        new_lecturer.hash_password("password")
+        new_lecturer.save()
+        flash("Lecturer registered successfully", "success")
+        return redirect(url_for('all_lecturers'))
+    return render_template('admin/new_lecturer.html')
+
+@app.route('/admin/course/new', methods=['GET', 'POST'])
+@login_required
+def new_course():
+    if request.method == 'POST':
+        # Create a new course record using SQLAlchemy
+        lecturer = models.storage.get_session().query(
+            Lecturer).filter_by(id=request.form['lecturer']).first()
+        # new_course = Course(**(dict(request.form)))
+        new_course = Course()
+        new_course.lecturer_id = lecturer.id
+        new_course.title = request.form['title']
+        new_course.code = request.form['code']
+        new_course.save()
+        flash("Course registered successfully", "success")
+        return redirect(url_for('all_courses'))
+    lecturers = storage.all(Lecturer)
+    return render_template('admin/new_course.html', lecturers=lecturers.values())
 
 
 @app.route('/upload', methods=['POST'])
@@ -159,22 +223,10 @@ def login():
         password = request.form.get("password")
         # students = models.storage.get_session().query.all(Student)
         student = None
-        student = models.storage.get_session().query(Student).filter_by(mat_number=username).first()
-        # for s in students:
-        #     print(s)
-        #     if s['mat_number'] == username:
-        #         student = Student(**dict(s))
-        #         break
-
-        # lecturer = None
-        # lecturer = models.storage.get_session().query(Lecturer).filter_by(mat_number=username).first()
-        # for l in lecturers:
-        #     if l.username == username:
-        #         lecturer = l
-        #         break
-        # student = Student.query.filter_by(username=username).first()
-        # lecturer = models.lecturer.Lecturer.query.filter_by(username=username).first()
-        lecturer = models.storage.get_session().query(Lecturer).filter_by(username=username).first()
+        student = models.storage.get_session().query(
+            Student).filter_by(mat_number=username).first()
+        lecturer = models.storage.get_session().query(
+            Lecturer).filter_by(username=username).first()
         if student and check_password_hash(student.password, password):
             login_user(student)
             return redirect(url_for("admin"))  # Redirect admin users
@@ -185,6 +237,60 @@ def login():
             flash("Login failed. Please check your credentials.", "danger")
             return render_template("admin/login.html")
     return render_template("admin/login.html")
+
+
+@app.route("/admin/students/modify?id=<id>", methods=["GET", "POST"])
+@login_required
+def modify_student(id):
+    student = models.storage.get_session().query(Student).filter_by(id=id).first()
+    return redirect("admin/students.html")
+
+
+@app.route("/admin/lecturers/modify?id=<id>", methods=["GET", "POST"])
+@login_required
+def modify_lecturer(id):
+    lecturer = models.storage.get_session().query(Lecturer).filter_by(id=id).first()
+    return redirect("admin/lecturers.html")
+
+@app.route("/admin/courses/modify?id=<id>", methods=["GET", "POST"])
+@login_required
+def modify_course(id):
+    course = models.storage.get_session().query(Course).filter_by(id=id).first()
+    return redirect("admin/courses.html")
+
+
+@app.route("/admin/students/delete?id=<id>", methods=["GET", "POST"])
+@login_required
+def delete_student(id):
+    student = models.storage.get_session().query(Student).filter_by(id=id).first()
+    storage.get_session().delete(student)
+    storage.get_session().commit()
+    flash('Student record successfully deleted', "success")
+    return redirect(url_for("all_students"))
+
+
+@app.route("/admin/lecturers/delete?id=<id>", methods=["GET", "POST"])
+@login_required
+def delete_lecturer(id):
+    '''deletes a lecturer account'''
+    lecturer = models.storage.get_session().query(Lecturer).filter_by(id=id).first()
+    if lecturer:
+        storage.get_session().delete(lecturer)
+        storage.get_session().commit()
+        flash('Lecturer record successfully deleted', "success")
+    return redirect(url_for("all_lecturers"))
+
+@app.route("/admin/courses/delete?id=<id>", methods=["GET", "POST"])
+@login_required
+def delete_course(id):
+    '''deletes a course'''
+    course = models.storage.get_session().query(Course).filter_by(id=id).first()
+    if course:
+        storage.get_session().delete(course)
+        storage.get_session().commit()
+        flash('Course record successfully deleted', "success")
+    return redirect(url_for("all_courses"))
+
 
 @app.route("/logout")
 @login_required

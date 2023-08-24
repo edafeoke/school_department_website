@@ -1,25 +1,223 @@
 {% extends 'base.html' %}
-{% block title %}
-Home
-{% endblock title %}
-
-{% block style %}
-<link rel= "stylesheet" type="text/css" href="{{ url_for('static',filename='index.css') }}">
-{% endblock style %}
-{% block header %}
-  <header>
-      <video autoplay muted loop id="myVideo">
-        <source src="../static/course-video.mp4" type="video/mp4" />
-      </video>
-
-      <div class="content">
-        <p class="subtitle">Welcome to the official website of</p>
-        <h1 class="title">Computer Science department</h1>
-        <a class="button" href="#">Get Started</a>
-      </div>
-    </header>
-{% endblock %}
-
+{% block title %}Home{% endblock title %}
 {% block main %}
-  
-{% endblock %}
+<header>
+  <video autoplay muted loop id="myVideo">
+    <source
+      src="{{ url_for('static',filename='images/course-video.mp4') }}"
+      type="video/mp4"
+    />
+  </video>
+
+  <div class="content">
+    <p class="subtitle">Welcome to the official website of</p>
+    <h1 class="title">Computer Science department</h1>
+    <a class="button" href="404.html">Get Started</a>
+  </div>
+</header>
+<section class="features">
+  <div class="col">
+    <div class="icon">
+      <svg
+        class="svg"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-award-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"
+        />
+        <path
+          d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"
+        />
+      </svg>
+    </div>
+    <div class="text">
+      <h3>Awards Certificate to Student</h3>
+      <p>
+        Manage student profiles, including personal information, academic
+        records, attendance, and more Track student progress and grades Generate
+        reports and transcripts.
+      </p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="icon">
+      <svg
+        class="svg"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-award-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"
+        />
+        <path
+          d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"
+        />
+      </svg>
+    </div>
+    <div class="text">
+      <h3>Awards Certificate to Student</h3>
+      <p>
+        Create evaluations for teachers based on performance criteria Monitor
+        teacher progress and performance Analyze evaluation results to identify
+        areas for improvement.
+      </p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="icon">
+      <svg
+        class="svg"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-award-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"
+        />
+        <path
+          d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"
+        />
+      </svg>
+    </div>
+    <div class="text">
+      <h3>Awards Certificate to Student</h3>
+      <p>
+        Create evaluations for teachers based on performance criteria Monitor
+        teacher progress and performance Analyze evaluation results to identify
+        areas for improvement
+      </p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="icon">
+      <svg
+        class="svg"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-award-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"
+        />
+        <path
+          d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"
+        />
+      </svg>
+    </div>
+    <div class="text">
+      <h3>Awards Certificate to Student</h3>
+      <p>
+        Create evaluations for teachers based on performance criteria Monitor
+        teacher progress and performance Analyze evaluation results to identify
+        areas for improvement
+      </p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="icon">
+      <svg
+        class="svg"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-award-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"
+        />
+        <path
+          d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"
+        />
+      </svg>
+    </div>
+    <div class="text">
+      <h3>Awards Certificate to Student</h3>
+      <p>
+        Create evaluations for teachers based on performance criteria Monitor
+        teacher progress and performance Analyze evaluation results to identify
+        areas for improvement
+      </p>
+    </div>
+  </div>
+  <div class="col">
+    <div class="icon">
+      <svg
+        class="svg"
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-award-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"
+        />
+        <path
+          d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"
+        />
+      </svg>
+    </div>
+    <div class="text">
+      <h3>Awards Certificate to Student</h3>
+      <p>
+        Create evaluations for teachers based on performance criteria Monitor
+        teacher progress and performance Analyze evaluation results to identify
+        areas for improvement
+      </p>
+    </div>
+  </div>
+</section>
+<!-- <section class="features">
+        <div class="col">
+          <div class="icon">
+            <img src="./images/passport.png" alt="user1">
+          </div>
+          <div class="text">
+            <h3>Oke Edafe Great</h3>
+            <p class="details">
+              HND 2 student
+            </p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="icon">
+            <img src="./images/passport.png" alt="user1">
+          </div>
+          <div class="text">
+            <h3>Oke Edafe Great</h3>
+            <p class="details">
+              HND 2 student
+            </p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="icon">
+            <img src="./images/passport.png" alt="user1">
+          </div>
+          <div class="text">
+            <h3>Oke Edafe Great</h3>
+            <p class="details">
+              HND 2 student
+            </p>
+          </div>
+        </div>
+      </section> -->
+      {% endblock main %}

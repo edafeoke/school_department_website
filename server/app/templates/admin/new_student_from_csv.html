@@ -2,9 +2,13 @@
 <div class="container-fluid">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title fw-semibold mb-4">Create new student from csv</h5>
+      <h5 class="card-title fw-semibold mb-4">REGISTER STUDENTS</h5>
       <div class="card">
         <div class="card-body">
+          {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %} {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %} {% endif %} {% endwith %}
           <form
             id="upload-form"
             action='{{url_for("new_students_from_csv")}}'
@@ -12,7 +16,9 @@
             enctype="multipart/form-data"
           >
             <div class="mb-3">
-              <label for="name" class="form-label">Upload CSV file</label>
+              <label for="name" class="form-label"
+                >UPLOAD STUDENTS DATA IN CSV FORMAT</label
+              >
               <input
                 placeholder="students.csv"
                 type="file"
@@ -39,7 +45,7 @@
           </div>
           {% if uploaded_data %}
           <div class="mt-5">
-            <h5>Uploaded CSV Data</h5>
+            <h5>UPLOADED CSV DATA</h5>
             <table class="table">
               <thead>
                 <tr>

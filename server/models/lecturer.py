@@ -18,6 +18,8 @@ class Lecturer(User, BaseModel, Base):
     if HBNB_TYPE_STORAGE == 'db':
         title = Column(String(128), nullable=True)
         bio = Column(String(128), nullable=True)
+        username = Column(String(128), nullable=False)
+        role = Column(String(128), nullable=False)
 
         # roles = relationship('Role', backref='lecturer', cascade='delete')
 
@@ -26,5 +28,6 @@ class Lecturer(User, BaseModel, Base):
         self.title = ''
         self.bio = ''
         self.username = ''
+        self.role = 'lecturer'
 
         super().__init__(*args, **kwargs)
