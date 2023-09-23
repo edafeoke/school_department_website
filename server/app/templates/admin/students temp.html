@@ -1,0 +1,70 @@
+{% extends 'admin/base.html' %} {% block content %}
+
+  <div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Students</h1>
+    <p class="mb-4">
+      A list of all computer science students in all levels
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All students</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table table-borderless table-striped"
+            id="studentTable"
+            width="100%"
+            cellspacing="0"
+          >
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Level</th>
+              <th>Matriculation number</th>
+              <th>Sex</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>#</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Level</th>
+              <th>Matriculation number</th>
+              <th>Sex</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+          <tbody>
+            {% for student in students %}
+            <tr>
+              <td>{{loop.index}}</td>
+              <td>{{student['first_name']}}</td>
+              <td>{{student['last_name']}}</td>
+              <td>{{ student['level']}}</td>
+              <td>{{student['mat_number']}}</td>
+              <td>{{ student['sex']}}</td>
+              <td>
+                <a href="{{ url_for('modify_student', id=student['id']) }}">
+                  <i class="fa fa-pen mx-3"></i>
+                </a>
+                <a href="{{ url_for('delete_student', id=student['id']) }}">
+                  <i class="fa fa-trash text-danger"></i>
+                </a>
+              </td>
+            </tr>
+            {% endfor%}
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

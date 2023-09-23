@@ -56,12 +56,12 @@ def close_db(error):
 @app.errorhandler(404)
 def not_found(error):
     # return make_response(jsonify({'error': 'Not found'}), 404)
-    return render_template('404.html')
+    return render_template('admin/404.html')
 
 @app.errorhandler(401)
-def not_found(error):
+def bad_request(error):
     # return make_response(jsonify({'error': 'Not found'}), 404)
-    return render_template('404.html')
+    return render_template('admin/404.html')
 
 
 @app.route('/')
@@ -85,7 +85,11 @@ def contact():
 @app.route('/admin', methods=['GET', 'POST'])
 @login_required
 def admin():
-    return render_template('admin/index.html')
+    models_count = {
+        'students':len(storage.all(Student)),
+        'lecturers':len(storage.all(Lecturer)),
+    }
+    return render_template('admin/index.html', models=models_count)
 
 @app.route('/admin/students', methods=['GET'])
 @login_required
@@ -221,7 +225,6 @@ def login():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        # students = models.storage.get_session().query.all(Student)
         student = None
         student = models.storage.get_session().query(
             Student).filter_by(mat_number=username).first()
