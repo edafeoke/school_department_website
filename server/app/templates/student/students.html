@@ -4,16 +4,6 @@
     <h5 title="Show all students" class="card-title fw-semibold mb-4">
       All Students
     </h5>
-    <div class="mb-3">
-      <label for="level-filter">Filter by Level:</label>
-      <select id="level-filter" class="form-select">
-        <option value="">All</option>
-        <option value="ND 1">ND 1</option>
-        <option value="ND 2">ND 2</option>
-        <option value="HND 1">HND 1</option>
-        <option value="HND 2">HND 2</option>
-      </select>
-    </div>
     <!--<p class="mb-0"></p>-->
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %}
@@ -45,10 +35,10 @@
           <td>{{student['mat_number']}}</td>
           <td>{{ student['sex']}}</td>
           <td>
-            <a href="{{ url_for('admin_views.modify_student', id=student['id']) }}">
+            <a href="{{ url_for('modify_student', id=student['id']) }}">
               <i class="fa fa-pen mx-3"></i>
             </a>
-            <a href="{{ url_for('admin_views.delete_student', id=student['id']) }}">
+            <a href="{{ url_for('delete_student', id=student['id']) }}">
               <i class="fa fa-trash text-danger"></i>
             </a>
           </td>

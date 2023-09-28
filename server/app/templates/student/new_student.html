@@ -9,7 +9,7 @@
             messages %} {% for category, message in messages %}
             <div class="alert alert-{{ category }}">{{ message }}</div>
             {% endfor %} {% endif %} {% endwith %}
-          <form method='POST' action="{{ url_for('admin_views.new_student') }}">
+          <form method='POST' action="{{ url_for('new_student') }}">
             <div class="mb-3">
               <label for="first_name" class="form-label">First Name</label>
               <input

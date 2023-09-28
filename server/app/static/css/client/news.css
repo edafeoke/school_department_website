@@ -1,0 +1,195 @@
+nav {
+  background-color: var(--var-background);
+}
+
+hr {
+  color:#eee;
+  width: 100%;
+  margin: 2rem 0rem;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  width: 80%;
+  margin-top: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #333;
+}
+
+.body {
+  flex:1;
+  width: 80%;
+  min-height: 5rem;
+  margin: 0rem 2rem 2rem;
+  font-size: 1.5rem;
+  text-align: justify;
+}
+
+
+
+/*  blockquotes */
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,200italic);
+
+/* Variables */
+:root {
+  --background: #eee;
+  --black: #222222;
+  --white: #ffffff;
+
+  --default: #fff;
+  --defaultTextColor: #222222;
+  --defaultSecondaryTextColor: #eee;
+
+  --red: #d32f2f;
+  --redTextColor: var(--white);
+  --redSecondaryTextColor: #f44336;
+
+  --blue: #303f9f;
+  --blueTextColor: var(--white);
+  --blueSecondaryTextColor: #3f51b5;
+
+  --yellow: #f9a825;
+  --yellowTextColor: var(--black);
+  --yellowSecondaryTextColor: #fbc02d;
+}
+
+/* Body Styles */
+body {
+  background: var(--background);
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 300;
+}
+
+/* Container Styles */
+.container {
+  max-width: 800px;
+  margin: 80px auto;
+}
+
+/* Text Center Styles */
+.text-center {
+  text-align: center;
+}
+
+/* Quote Card Styles */
+.quote-card {
+  background: var(--default);
+  color: var(--defaultTextColor);
+  padding: 20px;
+  padding-left: 50px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(var(--black), 0.12);
+  position: relative;
+  overflow: hidden;
+  min-height: 120px;
+}
+
+.quote-card p {
+  font-size: 22px;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 80%;
+}
+
+.quote-card cite {
+  font-size: 16px;
+  margin-top: 10px;
+  display: block;
+  font-weight: 200;
+  opacity: 0.8;
+}
+
+.quote-card:before {
+  font-family: Georgia, serif;
+  content: "“";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 5em;
+  color: rgba(var(--defaultSecondaryTextColor), 0.8);
+  font-weight: normal;
+}
+
+.quote-card:after {
+  font-family: Georgia, serif;
+  content: "”";
+  position: absolute;
+  bottom: -110px;
+  line-height: 100px;
+  right: -32px;
+  font-size: 25em;
+  color: rgba(var(--defaultSecondaryTextColor), 0.8);
+  font-weight: normal;
+}
+
+@media (max-width: 640px) {
+  .quote-card:after {
+    font-size: 22em;
+    right: -25px;
+  }
+}
+
+/* Blue Card Styles */
+.quote-card.blue-card {
+  background: var(--blue);
+  color: var(--blueTextColor);
+  box-shadow: 0 1px 2px rgba(var(--black), 0.12), 0 2px 4px rgba(var(--black), 0.24);
+}
+
+.quote-card.blue-card:before,
+.quote-card.blue-card:after {
+  color: var(--blueSecondaryTextColor);
+}
+
+/* Red Card Styles */
+.quote-card.red-card {
+  background: var(--red);
+  color: var(--redTextColor);
+  box-shadow: 0 1px 2px rgba(var(--black), 0.12), 0 2px 4px rgba(var(--black), 0.24);
+}
+
+.quote-card.red-card:before,
+.quote-card.red-card:after {
+  color: var(--redSecondaryTextColor);
+}
+
+/* Yellow Card Styles */
+.quote-card.yellow-card {
+  background: var(--yellow);
+  color: var(--yellowTextColor);
+  box-shadow: 0 1px 2px rgba(var(--black), 0.12), 0 2px 4px rgba(var(--black), 0.24);
+}
+
+.quote-card.yellow-card:before,
+.quote-card.yellow-card:after {
+  color: var(--yellowSecondaryTextColor);
+}
+
+/* Credits Styles */
+.credits {
+  margin-top: 80px;
+}
+
+.credits a {
+  color: var(--black);
+  text-decoration: none;
+  text-shadow: 0 0 2px rgba(var(--black), 0.24);
+  padding-bottom: 1px;
+  display: inline-block;
+  border-bottom: 1px dashed rgba(var(--black), 0.24);
+  opacity: 0.6;
+  transition: 0.3s all ease-in;
+}
+
+.credits a:hover {
+  border-bottom-style: solid;
+  opacity: 1;
+}

@@ -1,4 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block link %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static',filename='css/client/contact.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static',filename='css/client/about.css') }}"
+/>
+{% endblock link %}
 <section>
   <h2 class="subtitle">If You Have Any Query, Feel Free To Contact Us</h2>
   <div class="row">

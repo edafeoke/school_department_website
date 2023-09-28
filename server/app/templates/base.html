@@ -40,6 +40,10 @@
       integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e"
       crossorigin="anonymous"
     />
+    {% block link %}{% endblock link %}
+    <style>
+      {% block style %}{% endblock style %}
+    </style>
   </head>
   <body>
     <div id="preloader">
@@ -54,8 +58,8 @@
       <ul class="links">
         <li><a class="{% if current_route == 'index' %}active{% endif %}" href="{{ url_for('index') }}">Home</a></li>
         <li><a class="{% if current_route == 'about' %}active{% endif %}" href="{{ url_for('about') }}">About</a></li>
-        <li><a class="{% if current_route == 'events' %}active{% endif %}" href="{{ url_for('about') }}">Events</a></li>
-        <li><a class="{% if current_route == 'news' %}active{% endif %}" href="{{ url_for('about') }}">News</a></li>
+        <li><a class="{% if current_route == 'events' %}active{% endif %}" href="{{ url_for('events') }}">Events</a></li>
+        <li><a class="{% if current_route == 'news' %}active{% endif %}" href="{{ url_for('news') }}">News</a></li>
         <li><a class="{% if current_route == 'contact' %}active{% endif %}" href="{{ url_for('contact') }}">Contact Us</a></li>
       </ul>
       <a class="button" href="{{ url_for('login') }}"
@@ -83,10 +87,10 @@
           <div class="footer-col">
             <h4>Quick links</h4>
             <ul>
-              <li><a href="404.html">About us</a></li>
-              <li><a href="404.html">Upcoming events</a></li>
-              <li><a href="404.html">News</a></li>
-              <li><a href="404.html">contact us</a></li>
+              <li><a class="{% if current_route == 'about' %}active{% endif %}" href="{{url_for('about')}}">About us</a></li>
+              <li><a href="{{url_for('events')}}">Upcoming events</a></li>
+              <li><a href="{{url_for('news')}}">News</a></li>
+              <li><a href="{{url_for('contact')}}">contact us</a></li>
               <!-- <li><a href="404.html">affiliate program</a></li> -->
             </ul>
           </div>
@@ -112,7 +116,7 @@
           <div class="footer-col">
             <h4>follow us</h4>
             <div class="social-links">
-              <a href="404.html"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://facebook.com"><i class="fab fa-facebook-f"></i></a>
               <a href="404.html"><i class="fab fa-twitter"></i></a>
               <a href="404.html"><i class="fab fa-instagram"></i></a>
               <a href="404.html"><i class="fab fa-linkedin-in"></i></a>
