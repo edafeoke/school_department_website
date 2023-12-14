@@ -22,14 +22,21 @@ class DBStorage:
     __session = None
 
     def __init__(self) -> None:
-        HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
-        HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
-        HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
-        HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
-        HBNB_ENV = getenv('HBNB_ENV')
+        # HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
+        # HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
+        # HBNB_MYSQL_HOST = getenv('HBNB_MYSQL_HOST')
+        # HBNB_MYSQL_DB = getenv('HBNB_MYSQL_DB')
+        # HBNB_ENV = getenv('HBNB_ENV')
+        HBNB_SQLITE_DB = 'database.sqlite'  # Change to your desired SQLite database file
 
-        self.__engine = create_engine(
-            f'mysql+mysqldb://{HBNB_MYSQL_USER}:{HBNB_MYSQL_PWD}@{HBNB_MYSQL_HOST}/{HBNB_MYSQL_DB}', echo=True, pool_pre_ping=True)
+        # Replace these values with your SQLite database configuration
+
+        # SQLite connection URL
+        sqlite_connection_url = f'sqlite:///{HBNB_SQLITE_DB}'
+
+
+        self.__engine = create_engine(sqlite_connection_url, echo=True, pool_pre_ping=True)
+            # f'mysql+mysqldb://{HBNB_MYSQL_USER}:{HBNB_MYSQL_PWD}@{HBNB_MYSQL_HOST}/{HBNB_MYSQL_DB}', echo=True, pool_pre_ping=True)
         if HBNB_ENV == "test":
             Base.metadata.drop_all(self.__engine)
 

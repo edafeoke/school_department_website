@@ -2,7 +2,7 @@
 
 ##### Computer science department website of a school
 
-## Installation
+## Installation (Windows)
 
     git clone https://github.com/edafeoke/school_department_website.git
 
@@ -18,4 +18,4 @@ or download the project as a zip file
 
 ## Run Server
 
-    ./run_server.sh
+    python -m app.app

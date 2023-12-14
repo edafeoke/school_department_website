@@ -3,7 +3,7 @@
 
 from os import getenv
 
-HBNB_TYPE_STORAGE = getenv('HBNB_TYPE_STORAGE')
+HBNB_TYPE_STORAGE = getenv('HBNB_TYPE_STORAGE') or 'db'
 
 storage = None
 

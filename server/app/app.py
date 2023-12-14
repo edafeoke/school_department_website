@@ -17,7 +17,6 @@ import MySQLdb
 from sqlalchemy.exc import IntegrityError
 import os
 from os import environ
-# from flask_restplus import Api
 import models
 from models.student import Student
 from models.lecturer import Lecturer
