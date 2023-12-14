@@ -5,7 +5,7 @@ attrs==23.1.0
 backports.zoneinfo==0.2.1
 blinker==1.6.2
 certifi==2023.7.22
-cffi==1.15.1
+cffi
 charset-normalizer==3.2.0
 click==8.1.6
 cryptography==41.0.4
@@ -52,8 +52,6 @@ python-dateutil==2.8.2
 python-dotenv==1.0.0
 pytz==2023.3
 PyYAML==6.0.1
-qrcode==7.4.2
-reportlab
 requests==2.31.0
 six==1.16.0
 SQLAlchemy==1.4.42

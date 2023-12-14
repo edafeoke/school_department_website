@@ -6,4 +6,5 @@ main
 install
 *.c
 .env
-venv
+env
+/venv

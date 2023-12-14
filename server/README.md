@@ -4,11 +4,19 @@
 
 ## Installation
 
-    git clone https://github.com/edafeoke/python-backend-codebase.git
+    git clone https://github.com/edafeoke/school_department_website.git
+
+or download the project as a zip file
+    ```bash
+    cd school_department_website/server
+    python -m venv virtualenv
+    source virtualenv/Scripts/activate
+    pip install -r requirement.txt
+    ```
+
 
 ## Setup
 
-    ./run_server.sh
 
 ## Run Server
 
