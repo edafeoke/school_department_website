@@ -1,8 +1,21 @@
-# school_department_website
+#  A school department website
 
-A school department website
+##### Computer science department website of a school
 
 ## Installation
 
-    cd clients/
-    
+    git clone https://github.com/edafeoke/school_department_website.git
+
+or download the project as a zip file
+
+    cd school_department_website/server
+    python -m venv virtualenv
+    source virtualenv/Scripts/activate
+    pip install -r requirement.txt
+
+## Setup
+
+
+## Run Server
+
+    ./run_server.sh
